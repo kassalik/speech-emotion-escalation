@@ -1,0 +1,206 @@
+{
+  "call_clean": {
+    "file": "results/demo/simulated_call.wav",
+    "seconds": 14.75,
+    "phone": false,
+    "threshold": 0.4155878722667694,
+    "mode": "call",
+    "escalate": true,
+    "peak_score": 0.809,
+    "windows": [
+      {
+        "start": 0.0,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.067
+      },
+      {
+        "start": 1.5,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.187
+      },
+      {
+        "start": 3.0,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.406
+      },
+      {
+        "start": 4.5,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.33
+      },
+      {
+        "start": 6.0,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.268
+      },
+      {
+        "start": 7.5,
+        "speech": true,
+        "emotion": "angry",
+        "p_escalate": 0.911
+      },
+      {
+        "start": 9.0,
+        "speech": true,
+        "emotion": "disgust",
+        "p_escalate": 0.706
+      },
+      {
+        "start": 10.5,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.483
+      },
+      {
+        "start": 11.7480625,
+        "speech": true,
+        "emotion": "disgust",
+        "p_escalate": 0.953
+      }
+    ],
+    "timeline": "results/demo/simulated_call_timeline.png"
+  },
+  "call_phone": {
+    "file": "results/demo/simulated_call.wav",
+    "seconds": 14.75,
+    "phone": true,
+    "threshold": 0.4155878722667694,
+    "mode": "call",
+    "escalate": true,
+    "peak_score": 0.799,
+    "windows": [
+      {
+        "start": 0.0,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.094
+      },
+      {
+        "start": 1.5,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.482
+      },
+      {
+        "start": 3.0,
+        "speech": true,
+        "emotion": "neutral",
+        "p_escalate": 0.422
+      },
+      {
+        "start": 4.5,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.351
+      },
+      {
+        "start": 6.0,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.235
+      },
+      {
+        "start": 7.5,
+        "speech": true,
+        "emotion": "angry",
+        "p_escalate": 0.865
+      },
+      {
+        "start": 9.0,
+        "speech": true,
+        "emotion": "disgust",
+        "p_escalate": 0.732
+      },
+      {
+        "start": 10.5,
+        "speech": true,
+        "emotion": "happy",
+        "p_escalate": 0.569
+      },
+      {
+        "start": 11.7480625,
+        "speech": true,
+        "emotion": "disgust",
+        "p_escalate": 0.967
+      }
+    ],
+    "timeline": "results/demo/simulated_call_phone_timeline.png"
+  },
+  "single_neutral_clean": {
+    "file": "results/demo/single_neutral_CRE_1001.wav",
+    "seconds": 2.6,
+    "phone": false,
+    "threshold": 0.4155878722667694,
+    "mode": "clip",
+    "emotion": "neutral",
+    "probabilities": {
+      "neutral": 0.46000000834465027,
+      "happy": 0.36800000071525574,
+      "sad": 0.04899999871850014,
+      "angry": 0.012000000104308128,
+      "fear": 0.09099999815225601,
+      "disgust": 0.01899999938905239
+    },
+    "p_escalate": 0.172,
+    "escalate": false
+  },
+  "single_neutral_phone": {
+    "file": "results/demo/single_neutral_CRE_1001.wav",
+    "seconds": 2.6,
+    "phone": true,
+    "threshold": 0.4155878722667694,
+    "mode": "clip",
+    "emotion": "neutral",
+    "probabilities": {
+      "neutral": 0.6340000033378601,
+      "happy": 0.23800000548362732,
+      "sad": 0.04500000178813934,
+      "angry": 0.017000000923871994,
+      "fear": 0.04100000113248825,
+      "disgust": 0.026000000536441803
+    },
+    "p_escalate": 0.128,
+    "escalate": false
+  },
+  "single_angry_clean": {
+    "file": "results/demo/single_angry_CRE_1001.wav",
+    "seconds": 2.28,
+    "phone": false,
+    "threshold": 0.4155878722667694,
+    "mode": "clip",
+    "emotion": "angry",
+    "probabilities": {
+      "neutral": 0.00800000037997961,
+      "happy": 0.019999999552965164,
+      "sad": 0.0020000000949949026,
+      "angry": 0.6970000267028809,
+      "fear": 0.003000000026077032,
+      "disgust": 0.2709999978542328
+    },
+    "p_escalate": 0.973,
+    "escalate": true
+  },
+  "single_angry_phone": {
+    "file": "results/demo/single_angry_CRE_1001.wav",
+    "seconds": 2.28,
+    "phone": true,
+    "threshold": 0.4155878722667694,
+    "mode": "clip",
+    "emotion": "angry",
+    "probabilities": {
+      "neutral": 0.014999999664723873,
+      "happy": 0.03500000014901161,
+      "sad": 0.007000000216066837,
+      "angry": 0.4690000116825104,
+      "fear": 0.007000000216066837,
+      "disgust": 0.46700000762939453
+    },
+    "p_escalate": 0.95,
+    "escalate": true
+  }
+}

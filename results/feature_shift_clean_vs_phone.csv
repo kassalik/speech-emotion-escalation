@@ -1,0 +1,7 @@
+,clean_median,phone_median
+f0_mean,194.12,263.73
+f0_std,23.12,36.08
+rms_db_std,6.3,8.74
+centroid_mean,1416.27,1058.78
+voiced_frac,0.67,0.54
+zcr_mean,0.1,0.09

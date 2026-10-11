@@ -1,0 +1,16 @@
+# Datasets (download with: python src/download_data.py) and processed arrays
+/data
+
+# Large / generated model files (release models are added explicitly)
+results/models/
+*.joblib
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

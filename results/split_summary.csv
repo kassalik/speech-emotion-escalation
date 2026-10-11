@@ -1,0 +1,4 @@
+split,neutral,happy,sad,angry,fear,disgust,total,speakers_CREMA-D,speakers_RAVDESS
+train,967,1035,1035,1035,1035,1035,6142,65,16
+val,204,214,214,214,214,214,1274,13,4
+test,204,214,214,214,214,214,1274,13,4

@@ -1,0 +1,8 @@
+start,end,emotion,escalate,source
+0.0,2.035375,neutral,False,data/raw/crema-d/1001_DFA_NEU_XX.wav
+2.035375,3.6370000000000005,neutral,False,data/raw/crema-d/1001_IEO_NEU_XX.wav
+3.6370000000000005,6.1061250000000005,neutral,False,data/raw/crema-d/1001_IOM_NEU_XX.wav
+6.1061250000000005,8.108125000000001,disgust,True,data/raw/crema-d/1001_IEO_DIS_HI.wav
+8.108125000000001,10.043375000000001,angry,True,data/raw/crema-d/1001_IEO_ANG_HI.wav
+10.043375000000001,12.112125,angry,True,data/raw/crema-d/1001_IEO_ANG_LO.wav
+12.112125,14.7480625,angry,True,data/raw/crema-d/1001_IEO_ANG_MD.wav

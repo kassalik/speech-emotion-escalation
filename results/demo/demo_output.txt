@@ -1,0 +1,50 @@
+=== Simulated call: test speaker CRE_1001 (never seen in training), 7 clips, 14.7 s ===
+Ground truth: neutral -> neutral -> neutral -> disgust -> angry -> angry -> angry
+
+File: simulated_call.wav  (14.7 s, telephone channel: off)
+  Window  Emotion  P(escalate)
+0:00.0  neutral  0.07
+0:01.5  neutral  0.19
+0:03.0  neutral  0.41
+0:04.5  happy    0.33
+0:06.0  happy    0.27
+0:07.5  angry    0.91  <
+0:09.0  disgust  0.71  <
+0:10.5  happy    0.48  <
+0:11.7  disgust  0.95  <
+Call verdict: ESCALATE (peak 2-window score 0.81 at 0:07.5-0:12.0, threshold 0.42)
+Timeline saved: results/demo/simulated_call_timeline.png
+
+File: simulated_call.wav  (14.7 s, telephone channel: on)
+  Window  Emotion  P(escalate)
+0:00.0  neutral  0.09
+0:01.5  neutral  0.48  <
+0:03.0  neutral  0.42  <
+0:04.5  happy    0.35
+0:06.0  happy    0.23
+0:07.5  angry    0.87  <
+0:09.0  disgust  0.73  <
+0:10.5  happy    0.57  <
+0:11.7  disgust  0.97  <
+Call verdict: ESCALATE (peak 2-window score 0.80 at 0:07.5-0:12.0, threshold 0.42)
+Timeline saved: results/demo/simulated_call_phone_timeline.png
+
+--- Single clip, true emotion: neutral ---
+File: single_neutral_CRE_1001.wav  (2.6 s, telephone channel: off)
+Emotion probabilities: neutral 0.46  happy 0.37  fear 0.09  sad 0.05  disgust 0.02  angry 0.01
+Predicted emotion: NEUTRAL | P(escalate) 0.17 | Decision: OK (threshold 0.42)
+
+--- Single clip, true emotion: neutral ---
+File: single_neutral_CRE_1001.wav  (2.6 s, telephone channel: on)
+Emotion probabilities: neutral 0.63  happy 0.24  sad 0.04  fear 0.04  disgust 0.03  angry 0.02
+Predicted emotion: NEUTRAL | P(escalate) 0.13 | Decision: OK (threshold 0.42)
+
+--- Single clip, true emotion: angry ---
+File: single_angry_CRE_1001.wav  (2.3 s, telephone channel: off)
+Emotion probabilities: angry 0.70  disgust 0.27  happy 0.02  neutral 0.01  fear 0.00  sad 0.00
+Predicted emotion: ANGRY | P(escalate) 0.97 | Decision: ESCALATE (threshold 0.42)
+
+--- Single clip, true emotion: angry ---
+File: single_angry_CRE_1001.wav  (2.3 s, telephone channel: on)
+Emotion probabilities: angry 0.47  disgust 0.47  happy 0.04  neutral 0.01  fear 0.01  sad 0.01
+Predicted emotion: ANGRY | P(escalate) 0.95 | Decision: ESCALATE (threshold 0.42)
