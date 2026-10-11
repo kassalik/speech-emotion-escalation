@@ -1,0 +1,42 @@
+{
+  "model": "ser_cnn.onnx",
+  "source_checkpoint": "cnn_s42",
+  "classes": [
+    "neutral",
+    "happy",
+    "sad",
+    "angry",
+    "fear",
+    "disgust"
+  ],
+  "escalate_classes": [
+    "sad",
+    "angry",
+    "fear",
+    "disgust"
+  ],
+  "threshold": 0.4156,
+  "sample_rate": 16000,
+  "clip_samples": 48000,
+  "n_fft": 400,
+  "hop": 160,
+  "n_mels": 64,
+  "top_db": 80.0,
+  "trim_margin_db": 8,
+  "trim_top_db_range": [
+    15,
+    40
+  ],
+  "target_rms_dbfs": -23.0,
+  "peak_limit": 0.99,
+  "phone_sr": 8000,
+  "phone_band": [
+    300,
+    3400
+  ],
+  "mu": 255,
+  "window_hop_seconds": 1.5,
+  "vad_rel_db": 35.0,
+  "vad_abs_dbfs": -55.0,
+  "licence": "CC BY-NC-SA 4.0"
+}

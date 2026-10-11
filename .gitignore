@@ -14,3 +14,6 @@ __pycache__/
 *.log
 .DS_Store
 Thumbs.db
+
+# Build output (Hugging Face Space bundle)
+dist/

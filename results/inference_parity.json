@@ -1,0 +1,26 @@
+{
+  "frontend_logmel_abs_diff_db": {
+    "mean": 0.005202895496040583,
+    "max": 0.016513824462890625
+  },
+  "clean": {
+    "top1_agreement": 0.9952904238618524,
+    "escalate_decision_agreement": 0.9984301412872841,
+    "p_escalate_abs_diff_mean": 0.0011925480794161558,
+    "p_escalate_abs_diff_max": 0.01381593942642212,
+    "accuracy_light": 0.6562009419152276,
+    "accuracy_pytorch": 0.6562009419152276,
+    "macro_f1_light": 0.6554157493539874,
+    "macro_f1_pytorch": 0.6554726102835793
+  },
+  "phone": {
+    "top1_agreement": 0.9756671899529042,
+    "escalate_decision_agreement": 0.9945054945054945,
+    "p_escalate_abs_diff_mean": 0.006398629397153854,
+    "p_escalate_abs_diff_max": 0.07090914249420166,
+    "accuracy_light": 0.6436420722135008,
+    "accuracy_pytorch": 0.640502354788069,
+    "macro_f1_light": 0.6449344063940579,
+    "macro_f1_pytorch": 0.6417117356470532
+  }
+}

@@ -14,6 +14,21 @@
 | **Author** | Muhammad Kassali K |
 | **Licence** | CC BY-NC-SA 4.0 (the weights are derived from RAVDESS) |
 
+## Release artefacts
+
+| File | Description |
+|---|---|
+| `models/ser_cnn.onnx` | ONNX (opset 18) graph: log-mel dB `[N, 64, 301]` → probabilities `[N, 6]`, per-band standardisation built in; 4.7 MB; max difference vs PyTorch < 3 × 10⁻⁷ |
+| `models/frontend.npz` | Mel filterbank and Hann window exported from torchaudio, used by the NumPy front-end |
+| `models/config.json` | Class order, escalation classes, threshold 0.416, pre-processing and windowing constants |
+
+Runtime: `inference/` (ONNX Runtime + NumPy/SciPy). On all 1,274 test clips it agrees with the PyTorch pipeline on
+99.5% (clean) / 97.6% (telephone) of top-1 predictions and 99.8% / 99.5% of escalation decisions. Input quieter than
+−65 dBFS after silence trimming is reported as "no speech" instead of being classified.
+
+Latency (laptop AMD Ryzen 7 260, CPU): about 15 ms per 3 s window on one thread, about 6–8 ms on four threads, about
+175 MB peak memory.
+
 ## Intended use
 
 - **Primary use:** decision support for customer-support quality teams: ranking or flagging recorded calls that
@@ -83,6 +98,9 @@ disgust 0.59 · fear 0.52.
   it can raise false alarms; call-level thresholds need calibration on real calls.
 - **Mixed speakers.** The model scores whatever voice it hears; agent and customer must be separated (diarisation)
   before scoring real calls.
+- **Data quality.** One CREMA-D training clip (`1076_MTI_SAD_XX.wav`, labelled *sad*) is digital silence. It is
+  1 of 6,142 training clips and the test set is unaffected, but it teaches the model that silence looks "sad",
+  hence the −65 dBFS speech gate in the runtime. It should be excluded in future training runs.
 - **Language and accent coverage.** The training speech is English; performance on other languages and accents has
   not been evaluated.
 

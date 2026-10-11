@@ -1,0 +1,5 @@
+# Minimal runtime for inference/ (CPU only; also works on 64-bit ARM such as Raspberry Pi 5)
+numpy>=1.26
+scipy>=1.11
+soundfile>=0.12
+onnxruntime>=1.18

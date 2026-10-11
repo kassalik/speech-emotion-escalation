@@ -1,0 +1,50 @@
+{
+  "device": "laptop-ryzen7-260",
+  "machine": "x86_64",
+  "processor": "x86_64",
+  "python": "3.11.17",
+  "window_seconds": 3.0,
+  "results": {
+    "1_threads": {
+      "model_load_ms": 36.848706000000675,
+      "preprocess": {
+        "median_ms": 0.3104110000009541,
+        "p95_ms": 0.44642930000691133
+      },
+      "frontend_logmel": {
+        "median_ms": 0.6361229999924944,
+        "p95_ms": 5.37869820000052
+      },
+      "onnx_model": {
+        "median_ms": 12.348537000008264,
+        "p95_ms": 12.571866099975182
+      },
+      "end_to_end_window": {
+        "median_ms": 14.361245000003464,
+        "p95_ms": 15.145151099991947
+      },
+      "real_time_factor": 0.004787081666667821
+    },
+    "4_threads": {
+      "model_load_ms": 19.34046200000239,
+      "preprocess": {
+        "median_ms": 0.2918830000169237,
+        "p95_ms": 0.3456506000077297
+      },
+      "frontend_logmel": {
+        "median_ms": 0.5914250000103038,
+        "p95_ms": 0.7789484500221987
+      },
+      "onnx_model": {
+        "median_ms": 3.3187310000073467,
+        "p95_ms": 3.6512917499777577
+      },
+      "end_to_end_window": {
+        "median_ms": 6.258517499986738,
+        "p95_ms": 8.284024250019684
+      },
+      "real_time_factor": 0.002086172499995579
+    }
+  },
+  "peak_rss_mb": 173.3671875
+}

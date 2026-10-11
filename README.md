@@ -79,6 +79,51 @@ A simulated call by an **unseen** test speaker (neutral → disgust → angry) i
 timeline also shows the model's honest weaknesses: one quieter angry take is heard as *happy*, and two neutral windows
 sit just above the clip-level threshold.
 
+## Live web demo
+
+A Gradio app records or uploads speech, optionally simulates the telephone channel, and shows the emotion
+probabilities, the escalation decision and, for longer audio, the timeline.
+
+```bash
+pip install gradio
+python app/app.py            # open http://127.0.0.1:7860
+```
+
+`python scripts/build_space.py` assembles a ready-to-upload **Hugging Face Space** in `dist/hf-space/`
+(5.4 MB, CPU only, no PyTorch).
+
+## Lightweight inference (ONNX): edge-ready
+
+The release CNN is exported to **ONNX** (4.7 MB) and served by a small package, `inference/`, that needs only
+NumPy, SciPy, soundfile and ONNX Runtime: no PyTorch or librosa. It is the runtime for the web demo and for
+Raspberry Pi deployment.
+
+```bash
+pip install -r requirements-inference.txt
+python -m inference results/demo/single_angry_CRE_1001.wav            # emotion + decision
+python -m inference results/demo/simulated_call.wav --phone --json    # whole call, JSON output
+```
+
+```python
+from inference import EscalationPredictor
+result = EscalationPredictor().predict("call.wav", phone=True)
+```
+
+**Parity with the research pipeline** (all 1,274 test clips, `scripts/validate_inference.py`):
+
+| | Clean | Telephone |
+|---|---|---|
+| Same top emotion as PyTorch | 99.5% | 97.6% |
+| Same escalation decision | 99.8% | 99.5% |
+| Test accuracy: ONNX package vs PyTorch | 65.6% vs 65.6% | 64.4% vs 64.1% |
+
+The NumPy log-mel matches torchaudio to within 0.005 dB on average; the small telephone differences come from a
+different resampler.
+
+**CPU latency per 3 s window** (`scripts/benchmark_inference.py`, laptop AMD Ryzen 7 260):
+about 15 ms on one thread and about 6–8 ms on four threads, over 200× faster than real time, with about 175 MB peak
+memory. Raspberry Pi 5 numbers will be measured on the device.
+
 ## Pipeline
 
 ```mermaid
@@ -143,7 +188,12 @@ Individual steps can also be run as scripts from `src/`: `data.py` → `preproce
 │   ├── evaluate.py         held-out test evaluation + business metrics
 │   ├── importance.py       grouped permutation feature importance
 │   ├── predict.py          prediction for any .wav (clip or whole call)
+│   ├── export_onnx.py      ONNX export of the release model
 │   └── make_demo.py, eda.py, fig_*.py, plotstyle.py   demo material and figures
+├── inference/              lightweight runtime: ONNX Runtime + NumPy front-end (edge-ready)
+├── models/                 ser_cnn.onnx, frontend.npz, config.json (CC BY-NC-SA 4.0)
+├── app/app.py              Gradio web demo
+├── scripts/                parity validation, CPU benchmark, Hugging Face Space builder
 ├── notebooks/SER_Escalation.ipynb   end-to-end analysis
 ├── results/                figures, metrics, demo audio and timelines
 └── docs/                   DATA.md (sources, licences), MODEL_CARD.md
@@ -161,8 +211,8 @@ The model is intended as **decision support with a human in the loop**, not for 
 
 ## Roadmap
 
-- [ ] ONNX export and a lightweight inference package (ONNX Runtime, NumPy front-end)
-- [ ] Live web demo (Gradio / Hugging Face Space)
+- [x] ONNX export and a lightweight inference package (ONNX Runtime, NumPy front-end), validated against PyTorch
+- [x] Live web demo (Gradio); Hugging Face Space bundle ready to deploy
 - [ ] **Edge deployment on Raspberry Pi 5**: live microphone input, on-device inference, latency benchmark
 - [ ] Validation and fine-tuning on authorised, anonymised real call recordings
 - [ ] Speaker diarisation and voice activity detection for full calls
@@ -171,7 +221,8 @@ The model is intended as **decision support with a human in the loop**, not for 
 
 ## Tech stack
 
-Python · PyTorch · torchaudio · librosa · scikit-learn · NumPy / pandas · matplotlib · Jupyter
+Python · PyTorch · torchaudio · librosa · scikit-learn · ONNX / ONNX Runtime · Gradio · NumPy / SciPy / pandas ·
+matplotlib · Jupyter
 
 ## Data and licences
 
@@ -181,7 +232,7 @@ Python · PyTorch · torchaudio · librosa · scikit-learn · NumPy / pandas · 
     Affective Computing 5(4). Open Database License.
   - RAVDESS: Livingstone, S. R. & Russo, F. A. (2018). *The Ryerson Audio-Visual Database of Emotional Speech and Song.*
     PLoS ONE 13(5). CC BY-NC-SA 4.0.
-- **Trained model weights** (when published): CC BY-NC-SA 4.0, as they are derived from RAVDESS.
+- **Trained model weights** (`models/`): CC BY-NC-SA 4.0, as they are derived from RAVDESS (non-commercial use).
   Details in [`docs/DATA.md`](docs/DATA.md).
 
 ## Author
